@@ -1,0 +1,45 @@
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+
+
+int main(){
+    long long int t;
+    cin >> t;
+    long long int start = 1,init = 3;
+    int flag = 1;
+    while(flag){
+        if(start == t){
+            cout<<(start+2);
+            break;
+        }
+        else if((start+init)>t){
+            cout<<(start+2-(t-start));
+            break;                
+        }
+        start = start + init;
+        init = init * 2;
+    }
+    return 0;
+}
