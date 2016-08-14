@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+#define si(x) scanf("%d",&x)
+#define sll(x) scanf("%lld",&x)
+#define sstr(s) scanf("%s",s)
+#define nl printf("\n")
+#define ll long long int
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+#define vi vector<int>
+#define pb push_back
+#define mp make_pair
+#define fr first
+#define se second
+#define mod 1000000007
+
+map<int,int> m;
+int a[200005];
+
+int main()
+{
+//   m.clear();
+    int n,d; si(n); si(d);
+    for(int i=0;i<n;++i) {
+        si(a[i]);
+    }
+   // int d; si(d);
+    while(d--) {
+        int di; si(di);
+        m.clear();
+        int ans = mod;
+        int l,r;
+        for(int i=0;i<n;++i) {
+            int temp = a[i];
+            if(m.find(temp-di)!=m.end()) {
+                if(i-m[temp-di]+1 < ans) {
+                    ans = i-m[temp-di]+1;
+                    l = m[temp-di];
+                    r = i;
+                }
+            }
+            m[temp] = i;
+        }
+        if(ans==mod) {
+            cout<<-1<<endl;
+        }
+        else {
+            cout<<l+1<<" "<<r+1<<endl;
+        }
+    }
+    return 0;
+}
