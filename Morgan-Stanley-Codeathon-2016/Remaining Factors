@@ -1,0 +1,49 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <map>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    long long int n, t;
+    cin >> n;
+    t = n;
+    
+    map<long long int,long long int> factors;
+    while(t % 2 == 0)
+    {
+        factors[2]++;
+        t = t / 2;
+    }
+    
+    for(long long int i = 3; i <= sqrt(t); i = i + 2)
+    {
+        while(t % i == 0)
+        {
+            factors[i]++;
+            t = t / i;
+        }
+    }
+    
+    if(t > 2)
+        factors[t]++;
+    
+    long long int nfac = 1;
+    long long int sfac = 1;
+    
+    map<long long int,long long  int>::iterator it;
+    for(it = factors.begin(); it != factors.end(); it++)
+    {
+        nfac = nfac * (it->second + 1);
+        sfac = sfac * (2 * it->second + 1);
+    }
+    nfac = nfac - 1;
+    long long int belown = (sfac - 1) / 2;
+    
+    cout << belown - nfac;
+    return 0;
+}
